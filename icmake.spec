@@ -5,11 +5,11 @@ Version:	6.22
 Release:	3
 Group:		Development/Building
 License:	GPL
-Source0:	ftp://ftp.icce.rug.nl/pub/unix/%{name}-%{version}.tgz
-Source1:	ftp://ftp.icce.rug.nl/pub/unix/%{name}.doc
+Source0:	ftp://ftp.rug.nl/contrib/frank/software/linux/icmake/%{name}-%{version}.tgz
+Source1:	ftp://ftp.rug.nl/contrib/frank/software/linux/icmake/%{name}.doc
 Patch0:		%{name}-bootstrap.patch
 Patch1:		%{name}-warnings.patch
-URL:		ftp://ftp.icce.rug.nl/pub/unix
+URL:		ftp://ftp.rug.nl/contrib/frank/software/linux/icmake/icmake.lsm
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
