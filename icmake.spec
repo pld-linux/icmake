@@ -42,13 +42,11 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 install bin/* $RPM_BUILD_ROOT%{_bindir}
 install doc/icmake.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-gzip -9nf CHANGES icmake.doc doc/icmake.ps
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.gz icmake.doc.gz doc/icmake.ps.gz
+%doc CHANGES icmake.doc doc/icmake.ps
 %attr(755,root,root) %{_bindir}/icm*
 %{_mandir}/man1/*
