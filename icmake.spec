@@ -6,7 +6,9 @@ Release:	3
 Group:		Development/Building
 License:	GPL
 Source0:	ftp://ftp.rug.nl/contrib/frank/software/linux/icmake/%{name}-%{version}.tgz
+# Source0-md5:	dff5bb7e5570aaff9adff1bc1f9f630a
 Source1:	ftp://ftp.rug.nl/contrib/frank/software/linux/icmake/%{name}.doc
+# Source1-md5:	1b62cf6521101dbe53df87bc3a5e84d6
 Patch0:		%{name}-bootstrap.patch
 Patch1:		%{name}-warnings.patch
 URL:		ftp://ftp.rug.nl/contrib/frank/software/linux/icmake/icmake.lsm
