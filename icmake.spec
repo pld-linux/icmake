@@ -2,7 +2,7 @@ Summary:	Icmake - an Intelligent C-like Maker
 Summary(pl):	Icmake - inteligentny C-podobny "maker"
 Name:		icmake
 Version:	6.22
-Release:	1
+Release:	2
 Group:		Developement/Building
 Group(pl):	Programowanie/Budowanie
 Copyright:	GPL
@@ -43,13 +43,13 @@ install bin/* $RPM_BUILD_ROOT%{_bindir}
 install doc/icmake.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
-	CHANGES icmake.doc
+	CHANGES icmake.doc doc/icmake.ps
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.gz icmake.doc.gz doc/icmake.ps
+%doc CHANGES.gz icmake.doc.gz doc/icmake.ps.gz
 %attr(755,root,root) %{_bindir}/icm*
 %{_mandir}/man1/*
