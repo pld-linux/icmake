@@ -24,8 +24,8 @@ administrative tasks.
 %description -l pl
 Icmake jest kolejnym programem typu "make" -- ale takim, który u¿ywa
 sk³adni podobnej do C. Skrypty Icmake powinny byæ do¶æ 'naturalne' dla
-programistów C. Icmake jest ponadto potêznym narzêdziem skryptowym:
-mo¿e byæ u¿wany równie dobrze do tworzenia programów z równym
+programistów C. Icmake jest ponadto potê¿nym narzêdziem skryptowym:
+mo¿e byæ u¿ywany równie dobrze do tworzenia programów z równym
 powodzeniem jak do wykonywania zadañ administracyjnych.
 
 %prep
