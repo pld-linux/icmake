@@ -4,12 +4,13 @@ Name:		icmake
 Version:	6.22
 Release:	2
 Group:		Development/Building
+Group(de):	Entwicklung/Bauen
 Group(pl):	Programowanie/Budowanie
 License:	GPL
 Source0:	ftp://ftp.icce.rug.nl/pub/unix/%{name}-%{version}.tgz
 Source1:	ftp://ftp.icce.rug.nl/pub/unix/%{name}.doc
-Patch0:		icmake-bootstrap.patch
-Patch1:		icmake-warnings.patch
+Patch0:		%{name}-bootstrap.patch
+Patch1:		%{name}-warnings.patch
 URL:		ftp://ftp.icce/rug.nl/pub/unix
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,7 +35,7 @@ powodzeniem jak do wykonywania zadañ administracyjnych.
 install %{SOURCE1} .
 
 %build
-CFLAGS=$RPM_OPT_FLAGS /bin/sh bootstrap
+CFLAGS="%{rpmcflags}" /bin/sh bootstrap
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -43,8 +44,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 install bin/* $RPM_BUILD_ROOT%{_bindir}
 install doc/icmake.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
-	CHANGES icmake.doc doc/icmake.ps
+gzip -9nf CHANGES icmake.doc doc/icmake.ps
 
 %clean
 rm -rf $RPM_BUILD_ROOT
