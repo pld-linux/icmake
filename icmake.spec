@@ -3,7 +3,7 @@ Summary(pl):	Icmake - inteligentny C-podobny "maker"
 Name:		icmake
 Version:	6.22
 Release:	2
-Group:		Developement/Building
+Group:		Development/Building
 Group(pl):	Programowanie/Budowanie
 Copyright:	GPL
 Source0:	ftp://ftp.icce.rug.nl/pub/unix/%{name}-%{version}.tgz
