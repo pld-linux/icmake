@@ -4,8 +4,6 @@ Name:		icmake
 Version:	6.22
 Release:	3
 Group:		Development/Building
-Group(de):	Entwicklung/Bauen
-Group(pl):	Programowanie/Budowanie
 License:	GPL
 Source0:	ftp://ftp.icce.rug.nl/pub/unix/%{name}-%{version}.tgz
 Source1:	ftp://ftp.icce.rug.nl/pub/unix/%{name}.doc
