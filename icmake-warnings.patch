@@ -1,0 +1,22 @@
+--- exec/icm-exec.c.orig	Tue Nov 23 11:01:28 1999
++++ exec/icm-exec.c	Tue Nov 23 11:00:48 1999
+@@ -34,7 +34,7 @@
+ 
+ #include "icm-exec.h"
+ 
+-void main (argc, argv, envp)
++main (argc, argv, envp)
+ int argc;
+ char **argv;
+ char **envp;
+--- pp/icm-pp.c.orig	Tue Nov 23 11:01:49 1999
++++ pp/icm-pp.c	Tue Nov 23 10:59:11 1999
+@@ -35,7 +35,7 @@
+ 
+ #include "icm-pp.h"
+ 
+-void main (int argc, char **argv)
++main (int argc, char **argv)
+ {
+     register char
+         *progname;
