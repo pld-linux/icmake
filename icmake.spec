@@ -14,18 +14,17 @@ URL:		ftp://ftp.icce/rug.nl/pub/unix
 BuildRoot:   	/tmp/%{name}-%{version}-root
 
 %description
-Icmake is yet another maker -- but this time, one that uses
-a C-like syntaxis. The Icmake scripts should feel `natural' to
-all C programmers. Icmake is furthermore a powerful shell script
-language: it can be used for program maintenance as well as for
-system administrative tasks.
+Icmake is yet another maker -- but this time, one that uses a C-like
+syntaxis. The Icmake scripts should feel `natural' to all C programmers.
+Icmake is furthermore a powerful shell script language: it can be used for
+program maintenance as well as for system administrative tasks.
 
 %description -l pl
-Icmake jest kolejnym programem typu "make" -- ale takim, który
-u¿ywa sk³adni podobnej do C. Skrypty Icmake powinny byæ do¶æ 'naturalne'
-dla programistów C. Icmake jest ponadto potêznym narzêdziem skryptowym:
-mo¿e byæ u¿wany równie dobrze do tworzenia programów z równym powodzeniem
-jak do wykonywania zadañ administracyjnych.
+Icmake jest kolejnym programem typu "make" -- ale takim, który u¿ywa sk³adni
+podobnej do C. Skrypty Icmake powinny byæ do¶æ 'naturalne' dla programistów
+C. Icmake jest ponadto potêznym narzêdziem skryptowym: mo¿e byæ u¿wany
+równie dobrze do tworzenia programów z równym powodzeniem jak do wykonywania
+zadañ administracyjnych.
 
 %prep
 %setup -q -n icmake
@@ -53,4 +52,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGES.gz icmake.doc.gz doc/icmake.ps
 %attr(755,root,root) %{_bindir}/icm*
-%{_mandir}/man1/icmake.1.gz
+%{_mandir}/man1/*
