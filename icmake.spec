@@ -11,7 +11,7 @@ Source1:	ftp://ftp.icce.rug.nl/pub/unix/%{name}.doc
 Patch0:		icmake-bootstrap.patch
 Patch1:		icmake-warnings.patch
 URL:		ftp://ftp.icce/rug.nl/pub/unix
-BuildRoot:   	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Icmake is yet another maker -- but this time, one that uses a C-like
