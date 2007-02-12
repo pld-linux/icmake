@@ -1,5 +1,5 @@
 Summary:	Icmake - an Intelligent C-like Maker
-Summary(pl):	Icmake - inteligentny C-podobny "maker"
+Summary(pl.UTF-8):   Icmake - inteligentny C-podobny "maker"
 Name:		icmake
 Version:	6.22
 Release:	4
@@ -21,12 +21,12 @@ programmers. Icmake is furthermore a powerful shell script language:
 it can be used for program maintenance as well as for system
 administrative tasks.
 
-%description -l pl
-Icmake jest kolejnym programem typu "make" -- ale takim, który u¿ywa
-sk³adni podobnej do C. Skrypty Icmake powinny byæ do¶æ 'naturalne' dla
-programistów C. Icmake jest ponadto potê¿nym narzêdziem skryptowym:
-mo¿e byæ u¿ywany równie dobrze do tworzenia programów z równym
-powodzeniem jak do wykonywania zadañ administracyjnych.
+%description -l pl.UTF-8
+Icmake jest kolejnym programem typu "make" -- ale takim, ktÃ³ry uÅ¼ywa
+skÅ‚adni podobnej do C. Skrypty Icmake powinny byÄ‡ doÅ›Ä‡ 'naturalne' dla
+programistÃ³w C. Icmake jest ponadto potÄ™Å¼nym narzÄ™dziem skryptowym:
+moÅ¼e byÄ‡ uÅ¼ywany rÃ³wnie dobrze do tworzenia programÃ³w z rÃ³wnym
+powodzeniem jak do wykonywania zadaÅ„ administracyjnych.
 
 %prep
 %setup -q -n icmake
