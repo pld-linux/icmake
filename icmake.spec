@@ -1,5 +1,5 @@
 Summary:	Icmake - an Intelligent C-like Maker
-Summary(pl.UTF-8):   Icmake - inteligentny C-podobny "maker"
+Summary(pl.UTF-8):	Icmake - inteligentny C-podobny "maker"
 Name:		icmake
 Version:	6.22
 Release:	4
