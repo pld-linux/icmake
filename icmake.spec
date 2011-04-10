@@ -1,17 +1,14 @@
 Summary:	Icmake - an Intelligent C-like Maker
 Summary(pl.UTF-8):	Icmake - inteligentny C-podobny "maker"
 Name:		icmake
-Version:	6.22
-Release:	4
-Group:		Development/Building
+Version:	7.15.00
+Release:	1
 License:	GPL
-Source0:	ftp://ftp.rug.nl/contrib/frank/software/linux/icmake/%{name}-%{version}.tgz
-# Source0-md5:	dff5bb7e5570aaff9adff1bc1f9f630a
-Source1:	ftp://ftp.rug.nl/contrib/frank/software/linux/icmake/%{name}.doc
-# Source1-md5:	1b62cf6521101dbe53df87bc3a5e84d6
-Patch0:		%{name}-bootstrap.patch
-Patch1:		%{name}-warnings.patch
-URL:		ftp://ftp.rug.nl/contrib/frank/software/linux/icmake/icmake.lsm
+Group:		Development/Building
+Source0:	http://downloads.sourceforge.net/icmake/%{name}_%{version}.orig.tar.gz
+# Source0-md5:	3f23dcd960b03fd5b808f29372980dbc
+URL:		http://icmake.sourceforge.net/
+BuildRequires:	bash
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,26 +26,46 @@ może być używany równie dobrze do tworzenia programów z równym
 powodzeniem jak do wykonywania zadań administracyjnych.
 
 %prep
-%setup -q -n icmake
-%patch0 -p0
-%patch1 -p0
-install %{SOURCE1} .
+%setup -q
+sed -i -e 's#gcc#%{__cc}#g' icm_*
+sed -i -e 's#-O2 -g#%{rpmcflags} %{rpmcppflags}#g' icm_*
+sed -i -e 's#/lib/#/%{_lib}/#g' INSTALL.im
 
 %build
-CFLAGS="%{rpmcflags}" /bin/sh bootstrap
+./icm_bootstrap /
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
-install bin/* $RPM_BUILD_ROOT%{_bindir}
-install doc/icmake.1 $RPM_BUILD_ROOT%{_mandir}/man1
+./icm_install progs $RPM_BUILD_ROOT
+./icm_install scripts $RPM_BUILD_ROOT
+./icm_install skel $RPM_BUILD_ROOT
+./icm_install man $RPM_BUILD_ROOT
+./icm_install doc $RPM_BUILD_ROOT
+./icm_install etc $RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES icmake.doc doc/icmake.ps
-%attr(755,root,root) %{_bindir}/icm*
-%{_mandir}/man1/*
+%doc changelog doc/icmake.ps doc/icmake.doc
+%dir %{_sysconfdir}/icmake
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/icmake/icmstart.rc
+%attr(755,root,root) %{_bindir}/icmake
+%attr(755,root,root) %{_bindir}/icmbuild
+%attr(755,root,root) %{_bindir}/icmstart
+%attr(755,root,root) %{_bindir}/icmun
+%dir %{_libdir}/%{name}
+%attr(755,root,root) %{_libdir}/%{name}/icm-comp
+%attr(755,root,root) %{_libdir}/%{name}/icm-exec
+%attr(755,root,root) %{_libdir}/%{name}/icm-pp
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/parser
+%{_datadir}/%{name}/parser/grammar
+%dir %{_datadir}/%{name}/parser/gramspec
+%dir %{_datadir}/%{name}/parser/gramspec/*.*
+%attr(755,root,root) %{_datadir}/%{name}/parser/gramspec/grambuild
+%{_datadir}/%{name}/[^p]*
+%{_mandir}/man1/ic*.1*
+%{_mandir}/man7/ic*.7*
