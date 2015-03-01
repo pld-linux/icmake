@@ -2,7 +2,7 @@ Summary:	Icmake - an Intelligent C-like Maker
 Summary(pl.UTF-8):	Icmake - inteligentny C-podobny "maker"
 Name:		icmake
 Version:	7.16.00
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		Development/Building
 Source0:	http://downloads.sourceforge.net/icmake/%{name}_%{version}.orig.tar.gz
