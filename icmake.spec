@@ -1,13 +1,14 @@
 Summary:	Icmake - an Intelligent C-like Maker
 Summary(pl.UTF-8):	Icmake - inteligentny C-podobny "maker"
 Name:		icmake
-Version:	7.16.00
-Release:	2
+Version:	9.03.01
+Release:	1
 License:	GPL v3
 Group:		Development/Building
-Source0:	http://downloads.sourceforge.net/icmake/%{name}_%{version}.orig.tar.gz
-# Source0-md5:	174cf585d9133a42797d49e280345f03
-URL:		http://icmake.sourceforge.net/
+Source0:	https://gitlab.com/fbb-git/icmake/-/archive/%{version}/%{name}-%{version}.tar.bz2
+# Source0-md5:	aa906c6f3769ddd2684c7baab9adf160
+Patch0:		verbose-build.patch
+URL:		https://fbb-git.gitlab.io/icmake/
 BuildRequires:	bash
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -28,10 +29,13 @@ powodzeniem jak do wykonywania zadań administracyjnych.
 
 %prep
 %setup -q
-%{__sed} -i -e 's#gcc#%{__cc}#g' icm_bootstrap
-%{__sed} -i -e 's#/lib/#/%{_lib}/#g' INSTALL.im
+%patch0 -p0
+%{__sed} -i -e 's#/lib/#/%{_lib}/#g' icmake/INSTALL.im
 
 %build
+cd icmake
+./icm_prepare /
+CC="%{__cc}" \
 CFLAGS="%{rpmcflags} %{rpmcppflags}" \
 LDFLAGS="%{rpmldflags}" \
 ./icm_bootstrap /
@@ -39,35 +43,32 @@ LDFLAGS="%{rpmldflags}" \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-./icm_install progs $RPM_BUILD_ROOT
-./icm_install scripts $RPM_BUILD_ROOT
-./icm_install skel $RPM_BUILD_ROOT
-./icm_install man $RPM_BUILD_ROOT
-./icm_install doc $RPM_BUILD_ROOT
-./icm_install etc $RPM_BUILD_ROOT
+cd icmake
+./icm_install all $RPM_BUILD_ROOT
+
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/icmake{,-doc}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc changelog doc/icmake.ps doc/icmake.doc
+%doc icmake/changelog icmake/doc/icmake.ps icmake/doc/icmake.doc
 %dir %{_sysconfdir}/icmake
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/icmake/icmstart.rc
 %attr(755,root,root) %{_bindir}/icmake
 %attr(755,root,root) %{_bindir}/icmbuild
 %attr(755,root,root) %{_bindir}/icmstart
-%attr(755,root,root) %{_bindir}/icmun
 %dir %{_libdir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/icm-comp
+%attr(755,root,root) %{_libdir}/%{name}/icm-dep
 %attr(755,root,root) %{_libdir}/%{name}/icm-exec
 %attr(755,root,root) %{_libdir}/%{name}/icm-pp
+%attr(755,root,root) %{_libdir}/%{name}/icmbuild
+%attr(755,root,root) %{_libdir}/%{name}/icmun
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/parser
 %{_datadir}/%{name}/parser/grammar
-%dir %{_datadir}/%{name}/parser/gramspec
-%attr(755,root,root) %{_datadir}/%{name}/parser/gramspec/grambuild
-%{_datadir}/%{name}/parser/gramspec/*.gr0
 %{_datadir}/%{name}/[!p]*
 %{_mandir}/man1/icmake.1*
 %{_mandir}/man1/icmbuild.1*
