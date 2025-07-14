@@ -29,7 +29,7 @@ powodzeniem jak do wykonywania zadań administracyjnych.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch -P0 -p0
 %{__sed} -i -e 's#/lib/#/%{_lib}/#g' icmake/INSTALL.im
 
 %build
